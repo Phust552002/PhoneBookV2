@@ -1,0 +1,160 @@
+-- Sel_GetDepartments - Lấy danh sách phòng ban
+
+CREATE PROCEDURE [dbo].[Sel_GetDepartments]
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    SELECT 
+        DepartmentId, 
+        DepartmentName, 
+        ParentId, 
+        Level, 
+        RootName, 
+        Status
+    FROM H0_Departments
+    WHERE Status = 3
+    ORDER BY Sortby;
+END
+GO
+
+--Sel_GetEmployeesByDepartment - Lấy nhân viên theo phòng ban (bao gồm phòng ban con)
+Create PROCEDURE [dbo].[Sel_GetEmployeesByDepartment]
+    @DepartmentId INT,
+    @StatusList NVARCHAR(100) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    ;WITH cte AS (
+        SELECT DepartmentId 
+        FROM H0_Departments 
+        WHERE DepartmentId = @DepartmentId
+        
+        UNION ALL
+        
+        SELECT d.DepartmentId
+        FROM H0_Departments d
+        INNER JOIN cte ON d.ParentId = cte.DepartmentId
+    )
+    SELECT DISTINCT 
+        v.UserId, 
+        v.UserName, 
+        v.EmployeeCode, 
+        v.FullName, 
+        v.WorkingPhone, 
+        v.HandPhone, 
+        v.BusinessEmail, 
+        v.Status,
+        v.Sortby,
+        v.LevelPosition
+    FROM View_H0_DepartmentEmployee v
+    INNER JOIN cte ON v.DepartmentId = cte.DepartmentId
+    WHERE 
+        @StatusList IS NULL
+        OR CHARINDEX(',' + CAST(v.Status AS NVARCHAR(10)) + ',', ',' + @StatusList + ',') > 0
+    ORDER BY v.Sortby, v.LevelPosition;
+END
+GO
+
+-- Sel_GetAllEmployees - Lấy tất cả nhân viên đang làm việc
+USE [HRM]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[Sel_GetAllEmployees]
+    @StatusList NVARCHAR(100) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        v.UserId, 
+        v.UserName, 
+        v.EmployeeCode, 
+        v.FullName, 
+        v.WorkingPhone, 
+        v.HandPhone, 
+        v.BusinessEmail, 
+        v.Status, 
+        v.Sortby, 
+        v.LevelPosition
+    FROM View_H0_DepartmentEmployee v
+    WHERE 
+        @StatusList IS NULL
+        OR CHARINDEX(',' + CAST(v.Status AS NVARCHAR(10)) + ',', ',' + @StatusList + ',') > 0
+    ORDER BY v.Sortby, v.LevelPosition;
+END
+
+
+ -- Sel_GetEmployeeByUsername - Lấy thông tin nhân viên theo username (Login)
+-- =============================================
+
+
+CREATE PROCEDURE [dbo].[Sel_GetEmployeeByUsername]
+    @Username NVARCHAR(100)
+AS
+BEGIN
+
+    SET NOCOUNT ON;
+    
+    SELECT 
+        v.UserId, 
+        v.UserName, 
+        v.EmployeeCode, 
+        v.FullName, 
+        v.Password, 
+        v.PositionName,
+        v.WorkingPhone, 
+        v.HandPhone, 
+        v.BusinessEmail, 
+        v.Status,
+        de.DepartmentId
+    FROM View_H0_DepartmentEmployee v
+    LEFT JOIN H0_DepartmentEmployee de ON v.UserId = de.UserId 	    
+	WHERE v.UserName = @Username 
+        AND v.Status = 1;
+END
+GO
+
+-- Upd_UpdateEmployee - Cập nhật thông tin nhân viên
+
+
+CREATE Procedure [dbo].[Upd_UpdateEmployee]
+    @UserId INT,
+    @FullName NVARCHAR(255),
+    @WorkingPhone NVARCHAR(50),
+    @HandPhone NVARCHAR(50),
+    @BusinessEmail NVARCHAR(255)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE View_H0_DepartmentEmployee
+    SET 
+        FullName = @FullName,
+        WorkingPhone = @WorkingPhone,
+        HandPhone = @HandPhone,
+        BusinessEmail = @BusinessEmail
+    WHERE UserId = @UserId;
+
+    SELECT @@ROWCOUNT AS RowsAffected;
+END
+GO
+
+select* from View_H0_DepartmentEmployee
+-- Sel_GetUserRoles - Lấy danh sách quyền của user
+
+CREATE PROCEDURE [dbo].[Sel_GetUserRoles]
+    @UserId INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    SELECT RoleId 
+    FROM UserRoles 
+    WHERE UserId = @UserId;
+END
+GO

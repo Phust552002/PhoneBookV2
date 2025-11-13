@@ -1,0 +1,937 @@
+﻿@model List<PhoneBook.Models.Department>
+@using Kendo.Mvc
+@{
+    ViewData["Title"] = "Danh bạ nội bộ";
+    var isAdmin = ViewBag.IsAdmin ?? false;
+}
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+<meta charset="utf-8" />
+
+<style>
+    /* ====== OVERRIDE KENDO CSS VARIABLES ====== */
+    :root {
+        --kendo-color-primary: #0079bf;
+        --kendo-color-primary-hover: #5067c5;
+        --kendo-color-primary-active: #5067c5;
+        --kendo-color-on-primary: #ffffff;
+    }
+
+    /* Override trực tiếp cho nút Save */
+    .k-button-solid-primary,
+    .k-grid-update.k-button-solid-primary {
+        border-color: #0079bf !important;
+        color: #fff !important;
+        background-color: #0079bf !important;
+    }
+
+    .k-button-solid-primary:hover,
+    .k-grid-update.k-button-solid-primary:hover {
+        border-color: #5067c5 !important;
+        background-color: #5067c5 !important;
+    }
+
+    .k-button-solid-primary:active,
+    .k-grid-update.k-button-solid-primary:active {
+        border-color: #0079bf !important;
+        background-color: #0079bf !important;
+    }
+
+    /* Override cho nút Edit  */
+    .k-grid .k-grid-edit.k-button {
+        color: #0079bf !important;
+        background-color: transparent !important;
+        border-color: transparent !important;
+    }
+
+    .k-grid .k-grid-edit.k-button:hover {
+        color: #0079bf !important;
+        background-color: #e3f2fd !important;
+    }
+
+    .k-grid .k-grid-edit .k-button-icon {
+        color: #0079bf !important;
+    }
+
+    .k-grid .k-grid-edit:hover .k-button-icon {
+        color: #1976D2 !important;
+    }
+    /* ====== BASE ====== */
+    body {
+        font-size: 13px;
+    }
+
+    .phonebook-container {
+        padding: 10px 0;
+        height: calc(100vh - 80px);
+        overflow: hidden;
+    }
+
+    .section-card {
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        padding: 12px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #e9ecef;
+        flex-shrink: 0;
+    }
+
+        .section-header h3 {
+            margin: 0;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+    /* ====== LOADING OVERLAY ====== */
+    .loading-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.9);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        border-radius: 6px;
+    }
+
+    .loading-overlay.show {
+        display: flex;
+    }
+
+    .loading-spinner {
+        text-align: center;
+    }
+
+    .spinner {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #0079bf;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 15px;
+    }
+
+    @@keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+        color: #0079bf;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    /* ====== SEARCH BOX ====== */
+    .search-box {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        padding: 8px;
+        margin-bottom: 10px;
+        flex-shrink: 0;
+    }
+
+        .search-box label {
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .search-box input {
+            border-radius: 3px;
+            font-size: 12px;
+            padding: 4px 8px;
+        }
+
+    /* ====== EMPLOYEE COUNT ====== */
+    .employee-count {
+        background: #0079bf 100%;
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 4px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 12px;
+        margin-top: 8px;
+        box-shadow: 0 1px 4px rgba(102, 126, 234, 0.3);
+        flex-shrink: 0;
+    }
+
+    /* ====== TREE & GRID ====== */
+    .tree-wrapper {
+        flex: 1;
+        overflow-y: auto;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        padding: 6px;
+        background: #fff;
+    }
+
+    .grid-wrapper {
+        flex: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    #deptTree {
+        font-size: 12px;
+    }
+
+        #deptTree .k-in {
+            padding: 4px 6px;
+        }
+        #deptTree .k-selected > .k-in {
+            background-color:#0079bf !important;
+            color: white !important;
+        }
+
+    .k-grid {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .k-grid-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    /* FORCE SCROLLBAR LUÔN HIỂN THỊ */
+    .k-grid .k-grid-content.k-auto-scrollable {
+        overflow-y: scroll !important;
+        overflow-x: auto !important;
+    }
+
+    /* Đảm bảo scrollbar luôn chiếm không gian */
+    .k-grid .k-grid-content.k-auto-scrollable::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 12px !important;
+        display: block !important;
+    }
+
+    .k-grid .k-grid-content.k-auto-scrollable::-webkit-scrollbar-thumb {
+        border-radius: 6px;
+        background-color: rgba(0, 0, 0, .3);
+        box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+        min-height: 30px;
+    }
+
+    .k-grid .k-grid-content.k-auto-scrollable::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+        display: block !important;
+    }
+
+    /* Firefox - Force scrollbar */
+    .k-grid .k-grid-content.k-auto-scrollable {
+        scrollbar-width: auto !important;
+        scrollbar-color: rgba(0, 0, 0, .3) #f1f1f1;
+    }
+
+    /* IE/Edge */
+    .k-grid .k-grid-content.k-auto-scrollable {
+        -ms-overflow-style: scrollbar !important;
+    }
+
+    .k-treeview .k-selected {
+    background-color: linear-gradient(90deg, #0079bf, #5067c5);
+    color: white !important;
+}
+    .k-grid-header th {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+
+    .k-grid-content td {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+
+    .k-pager-wrap {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+
+
+    .row-number {
+        font-weight: 600;
+        color: #6c757d;
+    }
+
+    /* ====== TABSTRIP ====== */
+    .k-tabstrip {
+        border: none;
+        margin-bottom: 10px;
+        flex-shrink: 0;
+    }
+
+        .k-tabstrip > .k-tabstrip-items-wrapper {
+            padding: 0;
+            border: none;
+        }
+
+        .k-tabstrip > .k-tabstrip-items-wrapper .k-tabstrip-items {
+            padding: 0;
+            border-bottom: 2px solid #e9ecef;
+            background: transparent;
+        }
+
+        .k-tabstrip .k-item {
+            border: none;
+            background: transparent;
+            margin-right: 8px;
+            border-radius: 6px 6px 0 0;
+            transition: all 0.2s ease;
+        }
+
+        .k-tabstrip .k-item .k-link {
+            padding: 10px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #6c757d;
+            border-radius: 6px 6px 0 0;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .k-tabstrip .k-item.k-active {
+            background: #0079bf;
+            border: 1px solid#0079bf;
+        }
+
+        .k-tabstrip .k-item.k-active .k-link {
+            background: #0079bf;
+            color: white;
+            border-bottom: 2px solid#0079bf;
+        }
+
+        .k-tabstrip .k-item:not(.k-active):hover {
+            background: #e3f2fd;
+        }
+
+        .k-tabstrip .k-item:not(.k-active):hover .k-link {
+            background: #e3f2fd;
+            color: #0079bf;
+        }
+
+        .k-tabstrip > .k-tabstrip-content,
+        .k-tabstrip-content {
+            display: none !important;
+        }
+
+    /* ====== EXPORT PDF STYLE ====== */
+    .k-pdf-export {
+        font-family: 'Roboto', 'DejaVu Sans', Arial, sans-serif !important;
+    }
+
+        .k-pdf-export .k-grid-toolbar,
+        .k-pdf-export .k-filter-row,
+        .k-pdf-export .k-pager,
+        .k-pdf-export .no-pdf {
+            display: none !important;
+        }
+
+    .page-template {
+        font-family: "Arial", sans-serif;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+        .page-template .header {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: 30px;
+            border-bottom: 1px solid #888;
+            color: #888;
+        }
+
+        .page-template .footer {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            right: 30px;
+            border-top: 1px solid #888;
+            text-align: center;
+            color: #888;
+        }
+
+        .page-template .watermark {
+            font-weight: bold;
+            font-size: 400%;
+            text-align: center;
+            margin-top: 30%;
+            color: #aaa;
+            opacity: 0.1;
+            transform: rotate(-35deg) scale(1.7, 1.5);
+        }
+
+    .k-grid .k-grid-content {
+        overflow-y: auto !important;
+    }
+
+    /* ====== EDIT POPUP STYLE ====== */
+    .k-window.k-grid-edit-form {
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .k-window.k-grid-edit-form .k-window-titlebar {
+        background:linear-gradient(90deg, #0079bf, #5067c5);
+        color: #fff;
+        border-radius: 8px 8px 0 0;
+        padding: 15px 20px;
+    }
+
+    .k-window.k-grid-edit-form .k-window-title {
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .k-window.k-grid-edit-form .k-edit-form-container {
+        padding: 20px;
+    }
+
+    .k-window.k-grid-edit-form .k-edit-label {
+        width: 35%;
+        text-align: right;
+        padding-right: 15px;
+        font-weight: 600;
+        color: #495057 ;
+        font-size: 13px;
+    }
+
+    .k-window.k-grid-edit-form .k-edit-field {
+        width: 65%;
+    }
+    k-window-title{
+        color :#fff;
+    }
+    .k-window.k-grid-edit-form .k-textbox {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        font-size: 13px;
+    }
+
+    .k-window.k-grid-edit-form .k-textbox:focus {
+        border-color: #2196F3;
+        box-shadow: 0 0 0 0.2rem rgba(33, 150, 243, 0.25);
+    }
+
+    .k-window.k-grid-edit-form .k-edit-buttons {
+        padding: 15px 20px;
+        background: #f8f9fa;
+        border-top: 1px solid #dee2e6;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .k-window.k-grid-edit-form .k-grid-update {
+        background: linear-gradient(90deg, #0079bf, #5067c5);
+        border-color: #0079bf;
+        color: white;
+        padding: 8px 20px;
+        font-weight: 600;
+    }
+
+    .k-window.k-grid-edit-form .k-grid-update:hover {
+        background:#0079bf;
+        border-color: #0079bf;
+    }
+
+    .k-window.k-grid-edit-form .k-grid-cancel {
+        background: #6c757d;
+        border-color: #6c757d;
+        color: white;
+        padding: 8px 20px;
+        font-weight: 600;
+    }
+
+    .k-window.k-grid-edit-form .k-grid-cancel:hover {
+        background: #5a6268;
+        border-color: #5a6268;
+    }
+
+    .k-window .k-window-titlebar {
+        display: flex;
+        justify-content: center;      
+        align-items: center;
+        text-align: center;
+        background:linear-gradient(90deg, #0079bf, #5067c5);
+        color: #fff;
+        font-weight: 600;
+        font-size: 16px;
+        border-radius: 0px 0px 0 0;
+        padding: 10px 20px;
+        position: relative;
+    }
+
+    .k-window .k-window-actions {
+        display: flex;
+        justify-content: center;      
+        align-items: center;
+        text-align: center;
+    }
+    .k-window-title {
+        display: flex;
+        justify-content: center;    
+        align-items: center;
+        text-align: center;
+        font-weight: 700;
+        font-size: 16px;
+        color: #fff;
+    }
+
+    .k-grid .k-grid-content-locked {
+        border-right: 2px solid #dee2e6;
+    }
+
+    .k-grid td.k-command-cell {
+        position: sticky;
+        right: 0;
+        background: #fff;
+        z-index: 2;
+    }
+
+    .k-grid tr:hover td.k-command-cell {
+        background: #f8f9fa;
+    }
+
+    @@media (max-width: 768px) {
+        .phonebook-container {
+            height: auto;
+            overflow: auto;
+        }
+
+        .section-card {
+            margin-bottom: 15px;
+            height: auto;
+        }
+    }
+    .k-grid .k-command-cell .k-grid-edit {
+        color: #2196F3;
+    }
+
+    .k-grid .k-command-cell .k-grid-edit:hover {
+        color: #1976D2;
+    }
+</style>
+
+<!-- ===================== MAIN VIEW ===================== -->
+<div class="phonebook-container">
+    <div class="row h-100">
+
+        <!-- DEPARTMENTS TREEVIEW -->
+        <div class="col-lg-3 col-md-4 h-100">
+            <div class="section-card">
+                <div class="tree-wrapper">
+                    @(Html.Kendo().TreeView()
+                        .Name("deptTree")
+                        .DataTextField("text")
+                        .DataSource(ds => ds
+                            .Read(r => r.Url(Url.Action("GetDepartments", "Home")))
+                            .Model(m =>
+                            {
+                                m.Id("id");
+                                m.Children("items");
+                            })
+                        )
+                        .Events(e => e
+                            .Select("onDeptSelect")
+                            .DataBound("onTreeDataBound")
+                        )
+                    )
+                </div>
+            </div>
+        </div>
+
+        <!-- EMPLOYEES LIST -->
+        <div class="col-lg-9 col-md-7 h-100">
+            <div class="section-card">
+                <div class="section-header">
+                    <h3><i class="fas fa-users me-2"></i><span id="departmentTitle">@Localizer["EmployeeListTitle"]</span></h3>
+                </div>
+
+                <!-- TABSTRIP -->
+                @(Html.Kendo().TabStrip()
+                    .Name("employeeTabStrip")
+                    .Items(items =>
+                    {
+                        items.Add()
+                            .Text(@Localizer["ActiveEmployees"].Value)
+                            .Selected(true)
+                            .HtmlAttributes(new { id = "tab-active" });
+                        
+                        items.Add()
+                            .Text(@Localizer["InactiveEmployees"].Value)
+                            .HtmlAttributes(new { id = "tab-inactive" });
+                    })
+                    .Events(e => e.Select("onTabSelect"))
+                )
+
+                <div class="search-box">
+                    <label class="form-label mb-1"><i class="fas fa-search me-1"></i>@Localizer["SearchLabel"]</label>
+                    <input type="text" id="employeeSearch" class="form-control form-control-sm"
+                           placeholder="@Localizer["SearchBoxPlaceholder"]" />
+                </div>
+
+                <div class="grid-wrapper">
+                    <div class="loading-overlay" id="gridLoadingOverlay">
+                        <div class="loading-spinner">
+                            <div class="spinner"></div>
+                            <div class="loading-text">Đang tải dữ liệu...</div>
+                        </div>
+                    </div>
+
+                    @(
+                        Html.Kendo().Grid<PhoneBook.Models.Employee>()
+                            .Name("employeeGrid")
+                            .ToolBar(tools => { 
+                                tools.Pdf(); 
+                                tools.Excel();
+                            })
+                            .Excel(excel => excel.FileName("PhoneBook_Export.xlsx").AllPages(true))
+                            .Pdf(pdf => pdf
+                                .AllPages()
+                                .AvoidLinks()
+                                .PaperSize("A4")
+                                .Scale(0.8)
+                                .Margin("2cm", "1cm", "1cm", "1cm")
+                                .Landscape()
+                                .TemplateId("page-template")
+                                .FileName("PhoneBook.pdf")
+                                .ProxyURL(Url.Action("Pdf_Export_Save", "Grid"))
+                                .ForceProxy(true)
+                            )
+                            .Columns(columns =>
+                            {
+                                columns.Template("<span class='row-number'></span>")
+                                    .Title(@Localizer["Column_STT"].Value)
+                                    .Width(60)
+                                    .HtmlAttributes(new { data_field = "stt" });
+
+                                columns.Bound(e => e.FullName)
+                                    .Title(@Localizer["Column_FullName"].Value)
+                                    .Width(240)
+                                    .HtmlAttributes(new { data_field = "fullname" });
+
+                                columns.Bound(e => e.WorkingPhone)
+                                    .Title(@Localizer["Column_WorkPhone"].Value)
+                                    .Width(200)
+                                    .HtmlAttributes(new { data_field = "workingphone" });
+
+                                columns.Bound(e => e.HandPhone)
+                                    .Title(@Localizer["Column_Mobile"].Value)
+                                    .Width(240)
+                                    .HtmlAttributes(new { data_field = "handphone" });
+
+                                columns.Bound(e => e.BusinessEmail)
+                                    .Title(@Localizer["Column_BusinessEmail"].Value)
+                                    .Width(240)
+                                    .HtmlAttributes(new { data_field = "businessemail" });
+
+                                if (isAdmin)
+                                {
+                                    columns.Command(command =>
+                                    {
+                                        command.Edit().Text(" ");
+                                    })
+                                    .Width(50)
+                                .HtmlAttributes(new { @class = "no-pdf" })
+                                .Resizable(false);
+                            }
+                        })
+                        .Scrollable()
+                        .Sortable()
+                        .ColumnMenu(menu => menu
+                            .Enabled(true)
+                            .Filterable(false))
+                        .Groupable(false)
+                        .Resizable(resize => resize.Columns(true))
+                        .Editable(editable => editable
+                            .Mode(GridEditMode.PopUp)
+                            .Window(w => w.Title(@Localizer["EditEmployeeTitle"].Value)) 
+                            .TemplateName("EmployeeEditTemplate")
+                        )
+                        .Pageable(page => page
+                            .ButtonCount(5)
+                           .Messages(m => m
+                                .ItemsPerPage(@Localizer["ItemsPerPageMsg"].Value)
+                                .Display(@Localizer["DisplayMsg"].Value)
+                                .Empty(@Localizer["EmptyMsg"].Value)
+                                .First(@Localizer["FirstMsg"].Value)
+                                .Last(@Localizer["LastMsg"].Value)
+                                .Next(@Localizer["NextMsg"].Value)
+                                .Previous(@Localizer["PreviousMsg"].Value)
+                                .Refresh(@Localizer["RefreshMsg"].Value)
+                            )
+                        )
+                        .DataSource(ds => ds
+                            .Ajax()
+                            .ServerOperation(false)
+                            .PageSize(30)
+                            .Model(m => m.Id(e => e.UserId))
+                            .Read(read => read.Action("GetAllEmployees", "Home").Type(HttpVerbs.Get))
+                            .Update(update => update.Action("UpdateEmployee", "Home").Type(HttpVerbs.Post))
+                        )
+                        .Events(e => e
+                            .DataBound("onGridDataBound")
+                            .Save("onGridSave")
+                            .Cancel("onGridCancel")
+                        )
+                    )
+                </div>
+
+                <div id="empCount" class="employee-count">
+                    <i class="fas fa-user-check me-2"></i><span>@Localizer["LoadingEmployees"]</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== SCRIPTS ===================== -->
+@section Scripts {
+    <script type="x/kendo-template" id="page-template">
+        <div class="page-template">
+            <div class="header">
+                <div style="float:right">@Localizer["PdfFooterText"]</div>
+                PhoneBook
+            </div>
+            <div class="watermark">SAGS</div>
+            <div class="footer">@Localizer["PdfFooterText"]</div>
+        </div>
+    </script>
+
+    <script>
+        var IsAdmin = @Json.Serialize(isAdmin);
+        var rootDepartmentName = "";
+        var currentDepartmentId = null;
+        var currentTab = "active";
+
+        function showLoading() {
+            $("#gridLoadingOverlay").addClass("show");
+        }
+
+        function hideLoading() {
+            setTimeout(function() {
+                $("#gridLoadingOverlay").removeClass("show");
+            }, 1000); 
+        }
+
+        $(document).ready(function () {
+            kendo.pdf.defineFont({
+                "DejaVu Sans": "https://kendo.cdn.telerik.com/2023.1.117/styles/fonts/DejaVu/DejaVuSans.ttf",
+                "DejaVu Sans|Bold": "https://kendo.cdn.telerik.com/2023.1.117/styles/fonts/DejaVu/DejaVuSans-Bold.ttf",
+                "DejaVu Sans|Italic": "https://kendo.cdn.telerik.com/2023.1.117/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf",
+                "DejaVu Sans|Bold|Italic": "https://kendo.cdn.telerik.com/2023.1.117/styles/fonts/DejaVu/DejaVuSans-BoldOblique.ttf"
+            });
+
+            const grid = $("#employeeGrid").data("kendoGrid");
+
+            setTimeout(function() {
+                const tree = $("#deptTree").data("kendoTreeView");
+                if (tree) {
+                    const rootNode = tree.element.find("li:first");
+                    if (rootNode.length > 0) {
+                        tree.select(rootNode);
+                        tree.trigger("select", { node: rootNode[0] });
+                    }
+                }
+            }, 500);
+
+            $("#employeeSearch").on("input", function () {
+                showLoading();
+                const val = $(this).val().toLowerCase();
+                grid.dataSource.filter(!val ? {} : {
+                    logic: "or",
+                    filters: [
+                        { field: "FullName", operator: "contains", value: val },
+                        { field: "WorkingPhone", operator: "contains", value: val },
+                        { field: "HandPhone", operator: "contains", value: val },
+                        { field: "BusinessEmail", operator: "contains", value: val }
+                    ]
+                });
+                hideLoading();
+            });
+
+            adjustGridHeight();
+            $(window).on("resize", adjustGridHeight);
+        });
+
+        function onTabSelect(e) {
+            const selectedTab = $(e.item).attr("id");
+            currentTab = selectedTab === "tab-active" ? "active" : "inactive";      
+            $("#employeeSearch").val("");
+            
+            loadEmployeesByTab();
+        }
+
+        function onTreeDataBound(e) {
+            const tree = this;
+            const rootNode = tree.element.find("li:first");
+            
+            if (rootNode.length > 0) {
+                const rootDataItem = tree.dataItem(rootNode);
+                if (rootDataItem) {
+                    rootDepartmentName = rootDataItem.text || "";
+                    updateDepartmentTitle(rootDepartmentName, true);
+                }
+                
+                tree.expand(rootNode);
+                
+                setTimeout(function() {
+                    tree.select(rootNode);
+                    tree.trigger("select", { node: rootNode[0] });
+                }, 100);
+            }
+        }
+
+        function updateDepartmentTitle(departmentName, isRoot = false) {
+            const title = departmentName || "@Localizer["EmployeeListTitle"]";
+            $("#departmentTitle").text(title);
+        }
+
+        function getDepartmentPath(tree, node) {
+            const path = [];
+            let currentNode = node;
+            
+            while (currentNode) {
+                const dataItem = tree.dataItem(currentNode);
+                if (dataItem) {
+                    path.unshift(dataItem.text);
+                    const parentNode = tree.parent(currentNode);
+                    if (parentNode && parentNode.length > 0) {
+                        currentNode = parentNode;
+                    } else {
+                        break;
+                    }
+                } else {
+                    break;
+                }
+            }
+            
+            return path;
+        }
+
+        function onGridSave(e) {
+            showLoading();
+            setTimeout(function () {
+                const grid = $("#employeeGrid").data("kendoGrid");
+                if (grid) onGridDataBound.call(grid);
+                hideLoading();
+            }, 200);
+        }
+
+        function onGridCancel(e) {
+            setTimeout(function () {
+                const grid = $("#employeeGrid").data("kendoGrid");
+                if (grid) onGridDataBound.call(grid);
+            }, 200);
+        }
+
+        function adjustGridHeight() {
+            const gridWrapper = $(".grid-wrapper");
+            const grid = $("#employeeGrid").data("kendoGrid");
+            if (!grid) return;
+
+            const h = gridWrapper.height();
+            const g = grid.wrapper;
+            const header = g.find(".k-grid-header").outerHeight();
+            const pager = g.find(".k-grid-pager").outerHeight();
+            g.find(".k-grid-content").height(h - header - pager - 10);
+        }
+
+        function onGridDataBound(e) {
+            const grid = this;
+            const rows = grid.items();
+            let index = (grid.dataSource.page() - 1) * grid.dataSource.pageSize();
+            rows.each(function () {
+                $(this).find(".row-number").text(++index);
+            });
+            updateEmployeeCount(grid.dataSource.total());
+            adjustGridHeight();
+            hideLoading();
+        }
+
+        function updateEmployeeCount(count) {
+            const statusText = currentTab === "active" ? "@Localizer["TotalEmployees"]" : "@Localizer["TotalInactiveEmployees"]";
+            $("#empCount").html(`<i class="fas fa-user-check me-2"></i>${statusText} <strong>${count}</strong>`);
+        }
+
+        async function loadEmployeesByTab() {
+            showLoading();
+            const grid = $("#employeeGrid").data("kendoGrid");
+            
+            let url;
+            if (currentDepartmentId === null || currentDepartmentId === -1 || currentDepartmentId === "-1") {
+                url = currentTab === "active" 
+                    ? "/Home/GetAllEmployees" 
+                    : "/Home/GetAllInactiveEmployees";
+            } else {
+                url = currentTab === "active"
+                    ? `/Home/GetEmployeesByDepartment?departmentId=${currentDepartmentId}`
+                    : `/Home/GetInactiveEmployeesByDepartment?departmentId=${currentDepartmentId}`;
+            }
+
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                grid.dataSource.data(data);
+                updateEmployeeCount(data.length);
+                hideLoading();
+            } catch {
+                $("#empCount").html(`<i class="fas fa-exclamation-triangle me-2"></i>@Localizer["LoadError"]`);
+                hideLoading();
+            }
+        }
+
+        async function onDeptSelect(e) {
+            showLoading();
+            const tree = $("#deptTree").data("kendoTreeView");
+            const node = tree.dataItem(e.node);
+            const grid = $("#employeeGrid").data("kendoGrid");
+            $("#employeeSearch").val("");
+            currentDepartmentId = node.id;
+            const path = getDepartmentPath(tree, e.node);
+            let title = "";
+            if (path.length === 1) {
+                title = path[0];
+            } else {
+                const shortPath = path.slice(-2);
+                title = shortPath.join(" - ");
+            }
+            updateDepartmentTitle(title, false);
+            await loadEmployeesByTab();
+        }
+    </script>
+    <script>
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
+</script>
+}

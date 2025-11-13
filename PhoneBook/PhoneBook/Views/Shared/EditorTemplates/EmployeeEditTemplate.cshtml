@@ -1,0 +1,45 @@
+﻿@model PhoneBook.Models.Employee
+@using Kendo.Mvc
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+<div class="k-edit-form-container">
+    <div class="k-edit-label">
+        <label for="UserId">UserId</label>
+    </div>
+    <div class="k-edit-field">
+        @Html.TextBoxFor(m => m.UserId, new { @class = "k-textbox", @disabled = "disabled" })
+    </div>
+    <div class="k-edit-label">
+        <label for="UserId">UserName</label>
+    </div>
+    <div class="k-edit-field">
+        @Html.TextBoxFor(m => m.UserName, new { @class = "k-textbox", @disabled = "disabled" })
+    </div>
+    <div class="k-edit-label">
+        <label for="FullName">@Localizer["Column_FullName"]</label>
+    </div>
+    <div class="k-edit-field">
+        @Html.TextBoxFor(m => m.FullName, new { @class = "k-textbox", @readonly = "readonly" })
+    </div>
+
+    <div class="k-edit-label">
+        <label for="WorkingPhone">@Localizer["Column_WorkPhone"]</label>
+    </div>
+    <div class="k-edit-field">
+        @Html.TextBoxFor(m => m.WorkingPhone, new { @class = "k-textbox" })
+    </div>
+
+    <div class="k-edit-label">
+        <label for="HandPhone">@Localizer["Column_Mobile"]</label>
+    </div>
+    <div class="k-edit-field">
+        @Html.TextBoxFor(m => m.HandPhone, new { @class = "k-textbox" })
+    </div>
+
+    <div class="k-edit-label">
+        <label for="BusinessEmail">@Localizer["Column_BusinessEmail"]</label>
+    </div>
+    <div class="k-edit-field">
+        @Html.TextBoxFor(m => m.BusinessEmail, new { @class = "k-textbox" })
+    </div>
+</div>
