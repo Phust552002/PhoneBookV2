@@ -991,6 +991,7 @@ C:\Users\Admin\Documents\GitHub\PhoneBook\PhoneBook\PhoneBook\obj\Debug\net8.0\P
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0\web.config
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0\appsettings.json
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0\bundleconfig.json
+C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0\PhoneBook.staticwebassets.runtime.json
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0\PhoneBook.staticwebassets.endpoints.json
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0\LatoFont\Lato-Black.ttf
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0\LatoFont\Lato-BlackItalic.ttf
@@ -1011,7 +1012,6 @@ C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0\LatoFont\Lato-Thin.ttf
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0\LatoFont\Lato-ThinItalic.ttf
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0\LatoFont\OFL.txt
-C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0\PhoneBook.staticwebassets.runtime.json
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0\PhoneBook.exe
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0\PhoneBook.deps.json
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\bin\Debug\net8.0\PhoneBook.runtimeconfig.json
@@ -1467,6 +1467,7 @@ C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\obj\Debug\net8.0
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\obj\Debug\net8.0\PhoneBook.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\obj\Debug\net8.0\PhoneBook.RazorAssemblyInfo.cache
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\obj\Debug\net8.0\PhoneBook.RazorAssemblyInfo.cs
+C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\obj\Debug\net8.0\PhoneBook.sourcelink.json
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\obj\Debug\net8.0\en\PhoneBook.resources.dll
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\obj\Debug\net8.0\vi\PhoneBook.resources.dll
 C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook\obj\Debug\net8.0\rjimswa.dswa.cache.json

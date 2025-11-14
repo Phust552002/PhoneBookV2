@@ -1,6 +1,8 @@
 ﻿using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Mvc;
+using PhoneBook.Models;
+using PhoneBook.Services;
 using System.Diagnostics;
 using System.Runtime.ConstrainedExecution;
 using Telerik.SvgIcons;
@@ -9,11 +11,11 @@ namespace PhoneBook.Controllers
 {
     public class GridController : Controller
     {
-        private readonly IPhoneBookRepository _repo;
+        private readonly IApiService _apiService;
 
-        public GridController(IPhoneBookRepository repo)
+        public GridController(IApiService apiService)
         {
-            _repo = repo;
+            _apiService = apiService;
         }
 
         //  PDF Export
@@ -23,11 +25,16 @@ namespace PhoneBook.Controllers
         }
 
         //  dữ liệu cho  Grid PDF Export
+        [HttpGet]
         [HttpPost]
         public async Task<IActionResult> Pdf_Export_Read([DataSourceRequest] Kendo.Mvc.UI.DataSourceRequest request)
         {
-            var employees = await _repo.GetAllEmployeesAsync();
-
+            var token = User.FindFirst("JwtToken")?.Value;
+            if (!string.IsNullOrEmpty(token))
+            {
+                _apiService.SetToken(token);
+            }
+            var employees = await _apiService.GetAsync<List<Employee>>("/api/Employees");
             // các trường cần hiển thị trong PDF
             var result = employees.Select(e => new
             {

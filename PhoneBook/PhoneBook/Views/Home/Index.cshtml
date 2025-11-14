@@ -731,7 +731,7 @@
         var rootDepartmentName = "";
         var currentDepartmentId = null;
         var currentTab = "active";
-
+        var currentEmployeeData = [];
         function showLoading() {
             $("#gridLoadingOverlay").addClass("show");
         }
@@ -837,20 +837,20 @@
             return path;
         }
 
-        function onGridSave(e) {
+        async function onGridSave(e) {
             showLoading();
-            setTimeout(function () {
-                const grid = $("#employeeGrid").data("kendoGrid");
-                if (grid) onGridDataBound.call(grid);
+    
+            try {
+                await new Promise(resolve => setTimeout(resolve, 300));
+                await loadEmployeesByTab();
+        
+            } catch (error) {
+                console.error("Error after save:", error);
                 hideLoading();
-            }, 200);
+            }
         }
 
         function onGridCancel(e) {
-            setTimeout(function () {
-                const grid = $("#employeeGrid").data("kendoGrid");
-                if (grid) onGridDataBound.call(grid);
-            }, 200);
         }
 
         function adjustGridHeight() {
@@ -885,7 +885,7 @@
         async function loadEmployeesByTab() {
             showLoading();
             const grid = $("#employeeGrid").data("kendoGrid");
-            
+    
             let url;
             if (currentDepartmentId === null || currentDepartmentId === -1 || currentDepartmentId === "-1") {
                 url = currentTab === "active" 
@@ -898,12 +898,30 @@
             }
 
             try {
-                const res = await fetch(url);
+                const res = await fetch(url, {
+                    method: 'GET',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+        
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+        
                 const data = await res.json();
+        
+                // Lưu data vào cache
+                currentEmployeeData = data;
+        
+                // Update grid
                 grid.dataSource.data(data);
                 updateEmployeeCount(data.length);
+        
                 hideLoading();
-            } catch {
+            } catch (error) {
+                console.error("Load employees error:", error);
                 $("#empCount").html(`<i class="fas fa-exclamation-triangle me-2"></i>@Localizer["LoadError"]`);
                 hideLoading();
             }
@@ -914,7 +932,13 @@
             const tree = $("#deptTree").data("kendoTreeView");
             const node = tree.dataItem(e.node);
             const grid = $("#employeeGrid").data("kendoGrid");
+    
+            // Xóa giá trị search input
             $("#employeeSearch").val("");
+    
+            // XÓA FILTER CỦA GRID - THÊM DÒNG NÀY
+            grid.dataSource.filter({});
+    
             currentDepartmentId = node.id;
             const path = getDepartmentPath(tree, e.node);
             let title = "";
