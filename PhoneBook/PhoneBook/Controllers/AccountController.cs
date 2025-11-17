@@ -114,7 +114,7 @@ namespace PhoneBook.Controllers
                 {
                     return Redirect(returnUrl);
                 }
-
+                System.Threading.Thread.Sleep(1000);
                 return RedirectToAction("Index", "Home");
             }
             catch (HttpRequestException ex)
@@ -144,7 +144,7 @@ namespace PhoneBook.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             Response.Cookies.Delete(".AspNetCore.Cookies");
             HttpContext.Session.Clear();
-
+            System.Threading.Thread.Sleep(500);
             return RedirectToAction("Login", "Account");
         }
 

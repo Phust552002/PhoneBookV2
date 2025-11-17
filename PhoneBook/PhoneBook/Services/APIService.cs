@@ -1,9 +1,10 @@
-﻿using System.Net.Http.Headers;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
+using PhoneBook.Models;
+using PhoneBook.Models.DTOs;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
-using Microsoft.AspNetCore.Http;
-using PhoneBook.Models.DTOs;
-
 namespace PhoneBook.Services
 {
     public interface IApiService
@@ -23,17 +24,23 @@ namespace PhoneBook.Services
         private readonly HttpClient _httpClient;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private const string TokenSessionKey = "JwtToken";
+        private readonly CredentialsConfig _adminConfig;
 
-        public ApiService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
+        public ApiService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor, IOptions<CredentialsConfig> adminConfig)
         {
             _httpClient = httpClient;
+            _adminConfig = adminConfig.Value;
             _httpContextAccessor = httpContextAccessor;
         }
 
         // Bước 1: Đăng nhập với admin để lấy JWT token
         public async Task<string> GetAdminTokenAsync()
         {
-            var adminLoginData = new { username = "admin", password = "123" };
+            var adminLoginData = new
+            {
+                username = _adminConfig.Username,
+                password = _adminConfig.Password
+            };
             var content = new StringContent(
                 JsonSerializer.Serialize(adminLoginData),
                 Encoding.UTF8,

@@ -44,7 +44,9 @@ builder.Services.AddKendo();
 
 builder.Services.AddDbContext<HRMDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("HRMDb")));
-
+// Credentials Settings
+builder.Services.Configure<CredentialsConfig>(
+    builder.Configuration.GetSection("AdminCredentials"));
 // Cookie Authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

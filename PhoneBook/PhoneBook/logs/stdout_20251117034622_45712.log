@@ -1,0 +1,736 @@
+info: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[63]
+      User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Users\Admin\Documents\GitHub\PhoneBookV2\PhoneBook\PhoneBook
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/ - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.Index (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: Microsoft.AspNetCore.Session.DistributedSession[2]
+      Accessing expired session, Key:0b7b17f4-13dc-1fdd-963a-81a76f4dcb6d
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 10.3698ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 23.2766ms - 200
+info: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[1]
+      Executing ViewResult, running view Index.
+info: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[4]
+      Executed ViewResult - view Index executed in 205.5236ms.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.Index (PhoneBook) in 288.9301ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.Index (PhoneBook)'
+info: Microsoft.AspNetCore.Session.DistributedSession[3]
+      Session started; Key:0b7b17f4-13dc-1fdd-963a-81a76f4dcb6d, Id:580b51a1-0b0d-fd83-0c91-b525c5084866
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/_framework/aspnetcore-browser-refresh.js - - -
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/_vs/browserLink - - -
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/ - 200 - text/html;+charset=utf-8 426.5304ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript;+charset=utf-8 6.7653ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 25.6370ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetDepartments - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetDepartments (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetDepartments", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDepartments() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 3.1166ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 7.4804ms - 200
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - - -
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[PhoneBook.Models.Department, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[<>f__AnonymousType2`5[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetAllEmployees", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEmployees() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 10.3671ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 14.3002ms - 200
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetDepartments (PhoneBook) in 45.3241ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetDepartments (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetDepartments - 200 - application/json;+charset=utf-8 62.3000ms
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook) in 36.1145ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - 200 - application/json;+charset=utf-8 55.7415ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - application/json -
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetAllEmployees", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEmployees() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Employees
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetEmployeesByDepartment", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeesByDepartment(Int32) on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 10.0189ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 13.9541ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook) in 63.3353ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - 200 - application/json;+charset=utf-8 75.1564ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetAllEmployees", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEmployees() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 26.9894ms - 200
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Employees
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 63.4125ms - 200
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 14.3079ms - 200
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - application/json -
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 19.6622ms - 200
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetEmployeesByDepartment", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeesByDepartment(Int32) on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook) in 92.0719ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - 200 - application/json;+charset=utf-8 116.1161ms
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook) in 44.1097ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - 200 - application/json;+charset=utf-8 53.5922ms
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 26.097ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 31.6055ms - 200
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook) in 46.7839ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - 200 - application/json;+charset=utf-8 57.8077ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetEmployeesByDepartment", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeesByDepartment(Int32) on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 26.4483ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 31.6292ms - 200
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook) in 57.9422ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - 200 - application/json;+charset=utf-8 68.5956ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST https://localhost:44364/Account/Logout - application/x-www-form-urlencoded 225
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.AccountController.Logout (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Logout", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Logout() on controller PhoneBook.Controllers.AccountController (PhoneBook).
+info: Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler[11]
+      AuthenticationScheme: Cookies signed out.
+info: Microsoft.AspNetCore.Mvc.RedirectToActionResult[1]
+      Executing RedirectResult, redirecting to /Account/Login.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.AccountController.Logout (PhoneBook) in 534.2251ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.AccountController.Logout (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Account/Login - - -
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST https://localhost:44364/Account/Logout - 302 - - 554.7748ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.AccountController.Login (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String) on controller PhoneBook.Controllers.AccountController (PhoneBook).
+info: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[1]
+      Executing ViewResult, running view Login.
+info: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[4]
+      Executed ViewResult - view Login executed in 21.0298ms.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.AccountController.Login (PhoneBook) in 23.8927ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.AccountController.Login (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Account/Login - 200 - text/html;+charset=utf-8 39.0303ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/_vs/browserLink - - -
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/_framework/aspnetcore-browser-refresh.js - - -
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript;+charset=utf-8 5.9704ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 16.4726ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST https://localhost:44364/Account/Login - application/x-www-form-urlencoded 245
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.AccountController.Login (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(PhoneBook.Models.LoginViewModel, System.String) on controller PhoneBook.Controllers.AccountController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request POST http://10.10.3.159:8683/api/Auth/login
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request POST http://10.10.3.159:8683/api/Auth/login
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 2.5068ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 8.023ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request POST http://10.10.3.159:8683/api/Account/login
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request POST http://10.10.3.159:8683/api/Account/login
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 3.7621ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 8.853ms - 200
+info: Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler[10]
+      AuthenticationScheme: Cookies signed in.
+info: Microsoft.AspNetCore.Mvc.RedirectToActionResult[1]
+      Executing RedirectResult, redirecting to /.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.AccountController.Login (PhoneBook) in 1051.32ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.AccountController.Login (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST https://localhost:44364/Account/Login - 302 - - 1068.0155ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/ - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.Index (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 1.9387ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 7.0857ms - 200
+info: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[1]
+      Executing ViewResult, running view Index.
+info: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[4]
+      Executed ViewResult - view Index executed in 8.2102ms.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.Index (PhoneBook) in 21.0112ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.Index (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/ - 200 - text/html;+charset=utf-8 32.4429ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/_vs/browserLink - - -
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/_framework/aspnetcore-browser-refresh.js - - -
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript;+charset=utf-8 4.2921ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetDepartments - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetDepartments (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetDepartments", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDepartments() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 2.2051ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 7.8752ms - 200
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - - -
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[PhoneBook.Models.Department, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[<>f__AnonymousType2`5[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 32.3340ms
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetAllEmployees", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEmployees() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Employees
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetDepartments (PhoneBook) in 20.8337ms
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Employees
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetDepartments (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetDepartments - 200 - application/json;+charset=utf-8 34.4462ms
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 10.1497ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 16.7722ms - 200
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook) in 30.801ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - 200 - application/json;+charset=utf-8 45.7562ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - - -
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetAllEmployees", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEmployees() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetEmployeesByDepartment", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeesByDepartment(Int32) on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Employees
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 9.9301ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 16.9869ms - 200
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook) in 30.0475ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - 200 - application/json;+charset=utf-8 43.1134ms
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 27.5659ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 35.2724ms - 200
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetAllEmployees", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEmployees() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Employees
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 9.716ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 15.511ms - 200
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetEmployeesByDepartment", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeesByDepartment(Int32) on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook) in 103.025ms
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - 200 - application/json;+charset=utf-8 120.2801ms
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook) in 70.2319ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - 200 - application/json;+charset=utf-8 80.4769ms
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 26.6541ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 32.4115ms - 200
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook) in 45.4251ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - 200 - application/json;+charset=utf-8 81.9931ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetEmployeesByDepartment", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeesByDepartment(Int32) on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 25.8453ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 31.4932ms - 200
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook) in 37.8083ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - 200 - application/json;+charset=utf-8 48.5428ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST https://localhost:44364/Account/Logout - application/x-www-form-urlencoded 225
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.AccountController.Logout (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Logout", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Logout() on controller PhoneBook.Controllers.AccountController (PhoneBook).
+info: Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler[11]
+      AuthenticationScheme: Cookies signed out.
+info: Microsoft.AspNetCore.Mvc.RedirectToActionResult[1]
+      Executing RedirectResult, redirecting to /Account/Login.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.AccountController.Logout (PhoneBook) in 517.4411ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.AccountController.Logout (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST https://localhost:44364/Account/Logout - 302 - - 530.0915ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Account/Login - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.AccountController.Login (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(System.String) on controller PhoneBook.Controllers.AccountController (PhoneBook).
+info: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[1]
+      Executing ViewResult, running view Login.
+info: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[4]
+      Executed ViewResult - view Login executed in 3.64ms.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.AccountController.Login (PhoneBook) in 5.5971ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.AccountController.Login (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Account/Login - 200 - text/html;+charset=utf-8 16.3300ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/_framework/aspnetcore-browser-refresh.js - - -
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/_vs/browserLink - - -
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript;+charset=utf-8 5.1006ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 14.5806ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST https://localhost:44364/Account/Login - application/x-www-form-urlencoded 245
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.AccountController.Login (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(PhoneBook.Models.LoginViewModel, System.String) on controller PhoneBook.Controllers.AccountController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request POST http://10.10.3.159:8683/api/Auth/login
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request POST http://10.10.3.159:8683/api/Auth/login
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 1.4674ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 6.2579ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request POST http://10.10.3.159:8683/api/Account/login
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request POST http://10.10.3.159:8683/api/Account/login
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 3.1439ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 7.513ms - 200
+info: Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler[10]
+      AuthenticationScheme: Cookies signed in.
+info: Microsoft.AspNetCore.Mvc.RedirectToActionResult[1]
+      Executing RedirectResult, redirecting to /.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.AccountController.Login (PhoneBook) in 1037.6209ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.AccountController.Login (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST https://localhost:44364/Account/Login - 302 - - 1049.9260ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/ - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.Index (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 1.8893ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 7.2108ms - 200
+info: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[1]
+      Executing ViewResult, running view Index.
+info: Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor[4]
+      Executed ViewResult - view Index executed in 6.6976ms.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.Index (PhoneBook) in 19.1934ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.Index (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/ - 200 - text/html;+charset=utf-8 30.5853ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/_framework/aspnetcore-browser-refresh.js - - -
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/_vs/browserLink - - -
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript;+charset=utf-8 7.4681ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetDepartments - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetDepartments (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetDepartments", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDepartments() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 18.9653ms
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 2.3247ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 7.7838ms - 200
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - - -
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[PhoneBook.Models.Department, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[<>f__AnonymousType2`5[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetAllEmployees", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEmployees() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Employees
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetDepartments (PhoneBook) in 21.1232ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetDepartments (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetDepartments - 200 - application/json;+charset=utf-8 34.6849ms
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 10.4881ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 15.7656ms - 200
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook) in 22.6017ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - 200 - application/json;+charset=utf-8 36.5611ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - application/json -
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetEmployeesByDepartment", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeesByDepartment(Int32) on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetAllEmployees", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEmployees() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 9.0171ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 16.7592ms - 200
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook) in 24.6506ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - 200 - application/json;+charset=utf-8 39.2510ms
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 27.1023ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 34.3795ms - 200
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetAllEmployees", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllEmployees() on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Employees
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - application/json -
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook) in 75.54ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - 200 - application/json;+charset=utf-8 93.1667ms
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetEmployeesByDepartment", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeesByDepartment(Int32) on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 9.7858ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 15.8992ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook) in 32.7307ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetAllEmployees (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetAllEmployees?sort=&group=&filter= - 200 - application/json;+charset=utf-8 69.9680ms
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 26.6657ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 32.3129ms - 200
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook) in 41.2764ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - 200 - application/json;+charset=utf-8 58.4959ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - application/json -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "GetEmployeesByDepartment", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetEmployeesByDepartment(Int32) on controller PhoneBook.Controllers.HomeController (PhoneBook).
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[100]
+      Start processing HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[100]
+      Sending HTTP request GET http://10.10.3.159:8683/api/Departments/0/employees
+info: System.Net.Http.HttpClient.IApiService.ClientHandler[101]
+      Received HTTP response headers after 24.7802ms - 200
+info: System.Net.Http.HttpClient.IApiService.LogicalHandler[101]
+      End processing HTTP request after 30.262ms - 200
+info: Microsoft.AspNetCore.Mvc.Infrastructure.SystemTextJsonResultExecutor[1]
+      Executing JsonResult, writing value of type 'System.Collections.Generic.List`1[[PhoneBook.Models.Employee, PhoneBook, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook) in 36.9308ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.HomeController.GetEmployeesByDepartment (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 GET https://localhost:44364/Home/GetEmployeesByDepartment?departmentId=0 - 200 - application/json;+charset=utf-8 48.3281ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST https://localhost:44364/Account/Logout - application/x-www-form-urlencoded 225
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.AccountController.Logout (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Logout", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Logout() on controller PhoneBook.Controllers.AccountController (PhoneBook).
+info: Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationHandler[11]
+      AuthenticationScheme: Cookies signed out.
+info: Microsoft.AspNetCore.Mvc.RedirectToActionResult[1]
+      Executing RedirectResult, redirecting to /Account/Login.
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[105]
+      Executed action PhoneBook.Controllers.AccountController.Logout (PhoneBook) in 506.7055ms
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'PhoneBook.Controllers.AccountController.Logout (PhoneBook)'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST https://localhost:44364/Account/Logout - 302 - - 519.8068ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 GET https://localhost:44364/Account/Login - - -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'PhoneBook.Controllers.AccountController.Login (PhoneBook)'
+info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[102]
+      Route matched with {action = "Login", controller = "Account"}. Executing controller 
